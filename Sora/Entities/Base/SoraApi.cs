@@ -317,7 +317,7 @@ namespace Sora.Entities.Base
         /// </param>
         public async ValueTask EnableGroupMemberMute(long groupId, long userId, long duration)
         {
-            if (groupId is < 100000 || userId is < 10000 || duration < 60)
+            if (groupId is < 100000 || userId is < 10000)
                 throw new ArgumentOutOfRangeException($"{nameof(groupId)} or {nameof(userId)} or {nameof(duration)} out of range");
             await ApiInterface.SetGroupBan(this.ConnectionGuid, groupId, userId, duration);
         }
@@ -342,7 +342,7 @@ namespace Sora.Entities.Base
         /// <param name="duration">禁言时长, 单位秒</param>
         public async ValueTask EnableGroupAnonymousMute(long groupId, Anonymous anonymous, long duration)
         {
-            if (groupId is < 100000 || duration < 60)
+            if (groupId is < 100000)
                 throw new ArgumentOutOfRangeException($"{nameof(groupId)} or {nameof(duration)} out of range");
             if(anonymous == null) 
                 throw new NullReferenceException("anonymous is null");
@@ -357,7 +357,7 @@ namespace Sora.Entities.Base
         /// <param name="duration">禁言时长, 单位秒</param>
         public async ValueTask EnableGroupAnonymousMute(long groupId, string anonymousFlag, long duration)
         {
-            if (groupId is < 100000 || duration < 60)
+            if (groupId is < 100000)
                 throw new ArgumentOutOfRangeException($"{nameof(groupId)} or {nameof(duration)} out of range");
             if(anonymousFlag == null) 
                 throw new NullReferenceException("anonymousFlag is null");
