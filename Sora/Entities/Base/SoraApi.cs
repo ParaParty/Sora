@@ -343,8 +343,6 @@ public sealed class SoraApi
             throw new ArgumentOutOfRangeException(nameof(groupId), $"out of range [{groupId}]");
         if (userId < MIN_USER_ID)
             throw new ArgumentOutOfRangeException(nameof(userId), $"out of range [{userId}]");
-        if (duration < MIN_DURATION)
-            throw new ArgumentOutOfRangeException(nameof(duration), $"out of range [{duration}]");
         return await ApiAdapter.SetGroupBan(ConnectionId, groupId, userId, duration);
     }
 
@@ -389,8 +387,6 @@ public sealed class SoraApi
     {
         if (groupId < MIN_GROUP_ID)
             throw new ArgumentOutOfRangeException(nameof(groupId), $"out of range [{groupId}]");
-        if (duration < MIN_DURATION)
-            throw new ArgumentOutOfRangeException(nameof(duration), $"out of range [{duration}]");
         if (anonymousFlag == null)
             throw new NullReferenceException("anonymousFlag null");
         return await ApiAdapter.SetAnonymousBan(ConnectionId, groupId, anonymousFlag, duration);
